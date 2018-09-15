@@ -19,7 +19,7 @@ void Main() {
 	App::setupfullsc();
         Graphics::SetBackGround(Palette::Black);
 	Window::Resize({ windowWidth, windowHeight }, true);
-	Window::SetTitle(U"Comb Viewer 3D");
+	Window::SetTitle(U"Comb Viewer 3D",verstr);
 
 	MyApp SceneMgr;
 	//メニュー
