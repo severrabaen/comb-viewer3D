@@ -1,6 +1,8 @@
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 
+const int disappMAndRec=10000;
+
 struct works{
   Model workmodel;
   String titleName,authorName;
