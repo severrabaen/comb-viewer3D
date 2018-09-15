@@ -15,7 +15,8 @@ class Works :public MyApp::Scene{
   private:
   //To change the model.
   Triangle goToLeft, goToRight;
-  //To disappMAndRec
+  //To disappMAndRec(2 things)
   Stopwatch stopwatch;
+  bool disappFlag;
   public:
 }
