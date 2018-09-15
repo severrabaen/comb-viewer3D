@@ -8,5 +8,6 @@ struct works{
 
 class Works :public MyApp::Scene{
   private:
+  Triangle goToLeft, goToRight;
   public:
 }
