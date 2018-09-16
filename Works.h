@@ -17,6 +17,6 @@ class Works :public MyApp::Scene{
   Triangle goToLeft, goToRight;
   //To disappMAndRec(2 things)
   Stopwatch stopwatch;
-  bool disappFlag;
+  bool disappFlag=false;
   public:
 }
