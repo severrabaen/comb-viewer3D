@@ -27,6 +27,8 @@ void Main() {
 	SceneMgr.add<Menu>(U"Menu");
 	//本編
 	SceneMgr.add<U"Works">;
+	//settings
+	SceneMgr.add<U"Setting">;
 
 	while (System::Update()) {
 		SceneMgr.updateScene();
