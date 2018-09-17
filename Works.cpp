@@ -24,7 +24,7 @@ void Works::update() {
 		}
 
 	}
-
+if(!getData().firstOpenFlag){
 	Graphics3D::FreeCamera();
 
 	if ((KeyRight.pressed() || goToRight.LeftClicked()) || ()) {
@@ -35,7 +35,12 @@ void Works::update() {
 	}
 
 	//later
-	if(TwitterImg.mouseOver()?)
+	if(TwitterRect.mouseOver()?)
+		
+		if(TwitterRect.leftClicked(){
+		  Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、"+authorName+"氏の"+titleName+"を見ています!");
+		}
+}
 }
 
 void Works::draw() {
