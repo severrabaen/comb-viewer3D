@@ -13,6 +13,7 @@ Works::Works(const InitData& init) :IScene(init) {
 	}
 	WorksFont = Font()//unknown;
 		howToTexture = Texture(U"");
+	TwitterImg = texture(U"Twitter.png");
 }
 
 void Works::update() {
@@ -32,13 +33,16 @@ void Works::update() {
 	if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || ()) {
 
 	}
+
+	//later
+	if(TwitterImg.mouseOver()?)
 }
 
 void Works::draw() {
 	if (!disappFlag) {
 		goToRight.draw();
 		goToLeft.draw();
-
+		TwitterImg.draw();
 	}
 	workModel.draw();
 
