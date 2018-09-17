@@ -46,7 +46,7 @@ void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, c
 
 class Works :public MyApp::Scene {
 private:
-	Texture howToTexture;
+	Texture howToTexture,TwitterImg;
 	//To change the model(2 things).
 	Triangle goToLeft, goToRight;
 	int nowdis, nextdis, prevdis;
