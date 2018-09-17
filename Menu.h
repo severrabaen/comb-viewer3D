@@ -82,8 +82,9 @@ class Menu :public MyApp::Scene{
 Font menuFont=Font(20,Typeface::Medium);
 const Array<GlowText> texts={
 GlowText(menuFont,U"Creator",10);
-GlowText(menuFont,U"Alphabetical",10);
-GlowText(menuFont,U"Random",10);
+GlowText(menuFont,U"Alphabetical order",10);
+GlowText(menuFont,U"Randomly",10);
+GlowText(menuFont,U"Settings",10);
 GlowText(menuFont,U"EXIT",10);
 }
 }
