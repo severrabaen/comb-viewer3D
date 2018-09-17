@@ -16,6 +16,7 @@ private:
 	Rect yesButton = Rect(120, 40).setcenter(center.movedBy(-70, 30));
 	Rect noButton = Rect(120, 40).setcenter(center.movedBy(70, 30));
 	EasingController<double> easing(0.0, 1.0, Easing::Quart, 500.0);
+	EscapeRect=drawshape<Rect>(;
 
 	void update() {
 		Graphics2D::SetTransform(Mat3x2::Identity());
@@ -34,10 +35,8 @@ private:
 			mFont(U"いいえ").drawCenter(noButton.center, uiColor);
 		}
 	}
-	if (!easing.isActive())
-	{
-		if (e == 1.0)
-		{
+	if (!easing.isActive()){
+		if (e == 1.0){
 			if (yesButton.mouseOver())
 				yesButton.draw(AlphaF(0.3));
 
@@ -50,8 +49,7 @@ private:
 			if (noButton.leftClicked())
 				easing.start();
 		}
-		else if (Input::MouseL.clicked())
-		{
+		else if (EscapeRect.leftClicked()){
 			easing.start();
 		}
 	}
