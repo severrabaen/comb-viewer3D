@@ -1,24 +1,44 @@
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
-#include <Works.h>
+#include "Main.h"
+#include "Works.h"
 
 Works::Works(const InitData& init) :IScene(init) {
 	TextReader reader(U"Works//Workslist.txt");
 	String line;
 	while (reader.readLine(line)) {
-		workModel = Model(U"" + U".obj");
+		workModel = Model(line + U".obj");
+		authorName = line;
+		titleName = line;
 	}
 	WorksFont = Font()//unknown;
+		howToTexture = Texture(U"");
 }
 
 void Works::update() {
+	while (getData().firstOpenFlag) {
+		howToTexture.draw();
+		if (KeyEnter.pressed()) {
+			getData().firstOpenFlag = false;
+		}
+
+	}
+
 	Graphics3D::FreeCamera();
+
+	if ((KeyRight.pressed() || goToRight.LeftClicked()) || ()) {
+
+	}
+	if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || ()) {
+
+	}
 }
 
 void Works::draw() {
 	if (!disappFlag) {
 		goToRight.draw();
 		goToLeft.draw();
+
 	}
 	workModel.draw();
 
