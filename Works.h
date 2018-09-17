@@ -23,7 +23,7 @@ enum class LeadLineTextVA {
 	Bottom,
 };
 
-void drwaLeadLine(const Vec2& from, const Circular& lead1, const double lead2, const String text, const LeadLineTextHA ha, const LeadLineVA va, const Font& WorksFont) {
+void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, const String text, const LeadLineTextHA ha, const LeadLineVA va, const Font& WorksFont) {
 	const Vec2 p1 = from;
 	const Vec2 p2 = p + lead1;
 	const Vec2 p3 = p2 + Circular(lead2, ha == LeadLineTextHA::Left ? 270_deg : 90_deg);
@@ -46,8 +46,10 @@ void drwaLeadLine(const Vec2& from, const Circular& lead1, const double lead2, c
 
 class Works :public MyApp::Scene {
 private:
-	//To change the model.
+	Texture howToTexture;
+	//To change the model(2 things).
 	Triangle goToLeft, goToRight;
+	int nowdis, nextdis, prevdis;
 	//To disappMAndRec(2 things)
 	Stopwatch stopwatch;
 	bool disappFlag = false;
