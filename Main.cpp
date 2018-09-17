@@ -3,7 +3,7 @@
 #include <HamFramework.hpp>
 #include "Main.h"
 #include "Menu.h"
-#include "3Dviewer.h"
+#include "Works.h"
 
 //フルスクリーン化
 namespace fullscreen {
