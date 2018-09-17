@@ -1,7 +1,7 @@
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 
-using MyApp = SceneManager<String, GameData>;
+using MyApp = SceneManager<String>;
 
 struct ViewerData {
 	bool firstOpenFlag = true;
