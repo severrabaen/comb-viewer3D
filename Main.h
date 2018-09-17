@@ -3,6 +3,63 @@
 
 using MyApp = SceneManager<String, GameData>;
 
+struct ViewerData {
+	bool firstOpenFlag = true;
+};
+
+//MessageBox(escape or not)
+class Main :public MyApp::Scene {
+private:
+	Font mFont = Font(18);
+	Point center = Window::Center();
+	Rect messageBox = Rect(300, 150).setCenter(center);
+	Rect yesButton = Rect(120, 40).setcenter(center.movedBy(-70, 30));
+	Rect noButton = Rect(120, 40).setcenter(center.movedBy(70, 30));
+	EasingController<double> easing(0.0, 1.0, Easing::Quart, 500.0);
+
+	void update() {
+		Graphics2D::SetTransform(Mat3x2::Identity());
+		const double e = easing.easeout();
+
+		if (e != 0) {
+			Graphics2D::SetTransform(Mat3x2::Translate(-center).scale(e).translate(center));
+			const ColorF uiColor = AlphaF(e);
+			RoundRect(messageBox, 20).draw(ColorF(0.2, 0.6, 0.4, e));
+			mFont(U"終了してよろしいですか？").drawCenter(center.movedBy(0, -30), uiColor);
+
+			yesButton.drawFrame(2, 0, uiColor);
+			mFont(U"はい").drawCenter(yesButton.center, uiColor);
+
+			noButton.drawFrame(2, 0, uiColor);
+			mFont(U"いいえ").drawCenter(noButton.center, uiColor);
+		}
+	}
+	if (!easing.isActive())
+	{
+		if (e == 1.0)
+		{
+			if (yesButton.mouseOver())
+				yesButton.draw(AlphaF(0.3));
+
+			if (noButton.mouseOver())
+				noButton.draw(AlphaF(0.3));
+
+			if (yesButton.leftClicked())
+				System::Exit();
+
+			if (noButton.leftClicked())
+				easing.start();
+		}
+		else if (Input::MouseL.clicked())
+		{
+			easing.start();
+		}
+	}
+public:
+
+}
+
+//いつもの
 template <class ShapeType>
 class drawshape :public ShapeType {
 public:
