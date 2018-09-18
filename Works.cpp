@@ -9,7 +9,7 @@ Works::Works(const InitData& init) :IScene(init) {
 	while (reader.readLine(line)) {
 		works working;
 		working.workModel = Model(U"works//" + line + U".obj");
-		INIReader ini(U"data//" + line + U"exp.txt");
+		INIReader ini(U"works//" + line + U"exp.ini");
 		if (!ini) {
 			return;
 		}
@@ -20,6 +20,17 @@ Works::Works(const InitData& init) :IScene(init) {
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
+	switch (getData().menuNum)
+	{
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	}
 }
 
 void Works::update() {
@@ -32,10 +43,14 @@ void Works::update() {
 	if (!getData().firstOpenFlag) {
 		Graphics3D::FreeCamera();
 		if ((KeyRight.pressed() || goToRight.LeftClicked()) || ()) {
-
+			nextWorkNum = nowWorkNum;
+			++nextWorkNum;
+			nextWorkNum %= works.size();
 		}
 		if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || ()) {
-
+			prevWorkNum = nowWorkNum;
+			++prevWorkNum;
+			prevWorkNum %= works.size();
 		}
 
 		//later
