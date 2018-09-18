@@ -48,6 +48,7 @@ class Works :public MyApp::Scene {
 private:
 	Texture howToTexture, TwitterImg;
 	Rect TwitterRect;
+	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
 	//To change the model(2 things).
 	Triangle goToLeft, goToRight;
