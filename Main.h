@@ -5,6 +5,7 @@ using MyApp = SceneManager<String>;
 
 struct ViewerData {
 	bool firstOpenFlag = true, glyphFlag = true;
+	int menuNum;
 };
 
 //MessageBox(escape or not)
