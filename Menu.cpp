@@ -23,7 +23,7 @@ void Menu::update() {
 				pos.x += g2.xAdvance;
 				continue;
 			}
-			else if (g.codePoint == U'D'{
+			else if (g.codePoint == U'D'){
 				const double ratio = cos(Math::TwoPi * t * 4);
 				g.texture.scaled(ratio, 1.0).draw(pos + g.offset + Vec2(g.xAdvance * (1 - ratio) / 2, 0), Color(48));
 			}
@@ -31,7 +31,7 @@ void Menu::update() {
 				g.texture.draw(pos + g.offset, Color(48));
 			}
 		}
-		getdata().glyphFlag = false;
+		getData().glyphFlag = false;
 	}
 	else {
 		int32 i = 0;
