@@ -59,7 +59,7 @@ void Works::update() {
 		}
 
 		if (TwitterRect.leftClicked()) {
-			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "氏の3DCG作品の" + titleName + "を見ています!");
+			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!ダウンロードはこちら:");
 		}
 	}
 }
