@@ -59,11 +59,12 @@ void Works::update() {
 		}
 
 		if (TwitterRect.leftClicked()) {
-			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!ダウンロードはこちら:");
+			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!\nダウンロードはこちら:");
 		}
 	}
 }
 
+//描画
 void Works::draw() {
 	if (!disappFlag) {
 		goToRight.draw();
