@@ -13,7 +13,7 @@ Works::Works(const InitData& init) :IScene(init) {
 		if (!ini) {
 			return;
 		}
-		authorName = ini.get<String>(U"what.author");
+		artistName = ini.get<String>(U"what.artist");
 		title = ini.get<String>(U"what.title");
 	}
 	WorksFont = Font();//unknown
