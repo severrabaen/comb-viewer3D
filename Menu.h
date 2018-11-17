@@ -8,7 +8,6 @@ private:
 	String m_text;
 	Texture m_texture;
 	Point m_offset = { 0,0 };
-
 public:
 	GlowText() = default;
 	GlowText(const Font& font, const String& text, int32 blur, double gamma = 2.0)
@@ -68,10 +67,10 @@ class Menu :public MyApp::Scene {
 	Font menuFont = Font(20, Typeface::Medium);
 	Font glyphFont;
 	const Array<GlowText> texts = {
-	GlowText(menuFont,U"Creator",10);
-	GlowText(menuFont,U"Alphabetical order",10);
-	GlowText(menuFont,U"Randomly",10);
-	GlowText(menuFont,U"Settings",10);
-	GlowText(menuFont,U"EXIT",10);
+	GlowText(menuFont,U"ARTISTS",10);
+	GlowText(menuFont,U"RAMDOM",10);
+	GlowText(menuFont,U"SETTING",10);
+	GlowText(menuFont,U"CREDIT",10);
+	GlowText(menuFont,U"QUIT",10);
 	}
 }
