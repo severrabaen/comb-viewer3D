@@ -29,6 +29,8 @@ void Main() {
 	SceneMgr.add<U"Works">;
 	//settings
 	SceneMgr.add<U"Setting">;
+	//post
+	SceneMgr.add<U"Post">;
 
 	while (System::Update()) {
 		SceneMgr.updateScene();
