@@ -56,13 +56,14 @@ void Works::update() {
 		if (TwitterRect.mouseOver()) {
 			WorksFont(U"Twitterに投稿する").draw();//座標決め
 		}
-
 		if (TwitterRect.leftClicked()) {
-			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちら:");
+			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + artistName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちら:");
 		}
 		//shape of cursor
-		const bool handCursor = goToRight.mouseOver;
-		const bool handCursor = goToLert.mouseOver;
+		const bool handCursorRight = goToRight.mouseOver;
+		const bool handCursorLeft = goToLert.mouseOver;
+		Cursor::SetStyle(handCursorRight ? CursorStyle::Hand : CursorStyle::Default);
+		Cursor::SetStyle(handCursorLeft ? CursorStyle::Hand : CursorStyle::Default);
 	}
 }
 
