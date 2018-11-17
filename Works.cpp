@@ -20,8 +20,7 @@ Works::Works(const InitData& init) :IScene(init) {
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
-	switch (getData().menuNum)
-	{
+	switch (getData().menuNum){
 	case 1:
 		break;
 	case 2:
@@ -59,17 +58,22 @@ void Works::update() {
 		}
 
 		if (TwitterRect.leftClicked()) {
-			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!\nダウンロードはこちら:");
+			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + authorName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちら:");
 		}
+		//shape of cursor
+		const bool handCursor = goToRight.mouseOver;
+		const bool handCursor = goToLert.mouseOver;
 	}
 }
 
 //描画
 void Works::draw() {
 	if (!disappFlag) {
-		goToRight.draw();
-		goToLeft.draw();
-		TwitterImg.draw();
+	  TwitterImg.draw();
+	}
+	if(){//dec
+	  goToRight.draw();
+	  goToLeft.draw();
 	}
 	workModel.draw();
 
