@@ -5,7 +5,7 @@ using MyApp = SceneManager<String>;
 
 struct ViewerData {
 	bool firstOpenFlag = true, glyphFlag = true;
-	int menuNum,worksNum;
+	int menuNum,worksNum,themeNum=0;//themeNum=0:Black 1:Light
 };
 
 //MessageBox(escape or not)
@@ -18,20 +18,16 @@ private:
 	Rect noButton = Rect(120, 40).setcenter(center.movedBy(70, 30));
 	EasingController<double> easing(0.0, 1.0, Easing::Quart, 500.0);
 	EscapeRect = drawshape<Rect>(;
-
 	void update() {
 		Graphics2D::SetTransform(Mat3x2::Identity());
 		const double e = easing.easeout();
-
 		if (e != 0) {
 			Graphics2D::SetTransform(Mat3x2::Translate(-center).scale(e).translate(center));
 			const ColorF uiColor = AlphaF(e);
 			RoundRect(messageBox, 20).draw(ColorF(0.2, 0.6, 0.4, e));
 			mFont(U"終了してよろしいですか？").drawCenter(center.movedBy(0, -30), uiColor);
-
 			yesButton.drawFrame(2, 0, uiColor);
 			mFont(U"はい").drawCenter(yesButton.center, uiColor);
-
 			noButton.drawFrame(2, 0, uiColor);
 			mFont(U"いいえ").drawCenter(noButton.center, uiColor);
 		}
