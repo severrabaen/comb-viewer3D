@@ -20,6 +20,13 @@ Works::Works(const InitData& init) :IScene(init) {
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
+	
+	//GUI(Setting)
+	GUI gui(GUIStyle::Default);
+	gui.setTitle(U"Setting");
+	gui.add(U"butt1",GUIButton::Create(U"Close"));
+	//テーマ切り替え(デフォルトはダークテーマ)
+	gui.add(L"rb1", GUIRadioButton::Create({ U"Dark Theme" ,U"Light Theme"}, 1u, true));
 }
 
 void Works::update() {
