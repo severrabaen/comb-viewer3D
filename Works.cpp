@@ -16,20 +16,10 @@ Works::Works(const InitData& init) :IScene(init) {
 		artistName = ini.get<String>(U"what.artist");
 		title = ini.get<String>(U"what.title");
 	}
-	WorksFont = Font();//unknown
+	WorksFont = Font();//決める
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
-	switch (getData().menuNum){
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	case 4:
-		break;
-	}
 }
 
 void Works::update() {
@@ -59,11 +49,13 @@ void Works::update() {
 		if (TwitterRect.leftClicked()) {
 			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + artistName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちら:");
 		}
-		//shape of cursor
-		const bool handCursorRight = goToRight.mouseOver;
-		const bool handCursorLeft = goToLert.mouseOver;
+		//マウスオーバー時にカーソルを手の形にする
+		const bool handCursorRight = goToRight.mouseOver();
+		const bool handCursorLeft = goToLeft.mouseOver();
+		const bool handCursorTwitter = TwitterRect.mouseOver();
 		Cursor::SetStyle(handCursorRight ? CursorStyle::Hand : CursorStyle::Default);
 		Cursor::SetStyle(handCursorLeft ? CursorStyle::Hand : CursorStyle::Default);
+		Cursor::SetStyle(handCursorTwitter ? CursorStyle::Hand : CursorStyle::Default);
 	}
 }
 
@@ -72,7 +64,7 @@ void Works::draw() {
 	if (!disappFlag) {
 	  TwitterImg.draw();
 	}
-	if(){//dec
+	if(){//いい感じの位置(x座標)にカーソルが来たら表示
 	  goToRight.draw();
 	  goToLeft.draw();
 	}
