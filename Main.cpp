@@ -18,7 +18,12 @@ namespace fullscreen {
 
 void Main() {
 	App::setupfullsc();
-	Graphics::SetBackGround(Palette::Black);
+	if(themeNum==0){
+	  Graphics::SetBackGround(Palette::HSV(0,0,14));
+	}
+	else{
+	  Graphics::SetBackGround(Palette::HSV(0,0,100));
+	}
 	Window::Resize({ windowWidth, windowHeight }, true);
 	Window::SetTitle(U"Comb Viewer 3D", verstr);
 
@@ -29,7 +34,7 @@ void Main() {
 	SceneMgr.add<U"Works">;
 	//settings
 	SceneMgr.add<U"Setting">;
-	//post
+	//post(文化祭版限定機能)
 	SceneMgr.add<U"Post">;
 
 	while (System::Update()) {
