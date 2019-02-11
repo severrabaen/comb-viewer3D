@@ -1,3 +1,13 @@
+#pragma once
+#include <Siv3D.hpp>
+#include <HamFramework.hpp>
+#include "Main.h"
+
+//キーボードに使う文字
+const String buttonChars = U"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?-_";
+//投稿者:本文
+using posting = std::pair<String, String>;
+
 class CharButton{
 private:
 	String m_text;
@@ -21,4 +31,11 @@ public:
 		}
 		return false;
 	}
+}
+
+
+class Post :public MyApp::Scene{
+private:
+	
+public:
 }
