@@ -4,7 +4,7 @@
 using MyApp = SceneManager<String>;
 
 struct ViewerData {
-	bool firstOpenFlag = true, glyphFlag = true;
+	bool firstOpenFlag = true, glyphFlag = true, slideFlag=true;
 	int menuNum,worksNum,themeNum=0;//themeNum=0:Black 1:Light
 };
 
