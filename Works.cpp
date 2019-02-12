@@ -3,8 +3,10 @@
 #include "Main.h"
 #include "Works.h"
 
+//(๑•ૅㅁ•๑)o00(ここはスライドショーメインパート)
+
 Works::Works(const InitData& init) :IScene(init) {
-	TextReader reader(U"Works//Workslist.txt");
+	TextReader reader(U"works//Workslist.txt");
 	String line;
 	while (reader.readLine(line)) {
 		works working;
@@ -13,23 +15,17 @@ Works::Works(const InitData& init) :IScene(init) {
 		if (!ini) {
 			return;
 		}
-		artistName = ini.get<String>(U"what.artist");
+		creatorName = ini.get<String>(U"what.creator");
 		title = ini.get<String>(U"what.title");
 	}
 	WorksFont = Font();//決める
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
-	
-	//GUI(Setting)
-	GUI gui(GUIStyle::Default);
-	gui.setTitle(U"Setting");
-	gui.add(U"butt1",GUIButton::Create(U"Close"));
-	//テーマ切り替え(デフォルトはダークテーマ)
-	gui.add(L"rb1", GUIRadioButton::Create({ U"Dark Theme" ,U"Light Theme"}, 1u, true));
 }
 
 void Works::update() {
+	//初回説明画像(いらないかな？)
 	while (getData().firstOpenFlag) {
 		howToTexture.draw();
 		if (KeyEnter.pressed()) {
@@ -38,23 +34,25 @@ void Works::update() {
 	}
 	if (!getData().firstOpenFlag) {
 		Graphics3D::FreeCamera();
-		if ((KeyRight.pressed() || goToRight.LeftClicked()) || ()) {
+
+		if ((KeyRight.pressed() || goToRight.LeftClicked()) || (getData().slideFlag&&)) {
 			nextWorkNum = nowWorkNum;
 			++nextWorkNum;
 			nextWorkNum %= works.size();
 		}
-		if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || ()) {
+
+		if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || (getData().slideFlag&&)) {
 			prevWorkNum = nowWorkNum;
 			++prevWorkNum;
 			prevWorkNum %= works.size();
 		}
 
-		//later
 		if (TwitterRect.mouseOver()) {
-			WorksFont(U"Twitterに投稿する").draw();//座標決め
+			WorksFont(U"Twitterに投稿する").draw();//座標決め(TwitterRectの少し下)
 		}
+
 		if (TwitterRect.leftClicked()) {
-			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + artistName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちら:");
+			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + creatorName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D\n@severrabaen");
 		}
 		//マウスオーバー時にカーソルを手の形にする
 		const bool handCursorRight = goToRight.mouseOver();
@@ -69,14 +67,11 @@ void Works::update() {
 //描画
 void Works::draw() {
 	if (!disappFlag) {
-	  TwitterImg.draw();
+		TwitterImg.draw();
 	}
-	if(){//いい感じの位置(x座標)にカーソルが来たら表示
-	  goToRight.draw();
-	  goToLeft.draw();
+	if () {//いい感じの位置(x座標)にカーソルが来たら表示
+		goToRight.draw();
+		goToLeft.draw();
 	}
 	workModel.draw();
-
-	//drawLeadLine(Window::Center(), Circular(100.0, 60_deg), 150.0, L"引き出し線", LeadLineTextHAlign::Right, LeadLineTextVAlign::Top, font);
-	//drawLeadLine(Window::Center() + Circular(50.0, -45_deg), Circular(100.0, -45_deg), 150.0, L"左にも引ける", LeadLineTextHAlign::Left, LeadLineTextVAlign::Top, font);
 }
