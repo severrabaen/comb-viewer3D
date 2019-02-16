@@ -1,6 +1,9 @@
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <hamFramework.hpp>
 #include "Main.h"
+
+//(๑•ૅㅁ•๑)o00(Menu.hを作っている)
 
 class GlowText {
 private:
@@ -13,8 +16,7 @@ public:
 	GlowText(const Font& font, const String& text, int32 blur, double gamma = 2.0)
 		: m_font(font)
 		, m_text(text)
-		, m_offset(blur + 4, blur + 4)
-	{
+		, m_offset(blur + 4, blur + 4) {
 		const Size region = font(text).region().stretched(blur + 4).size;
 
 		Image image(region, Color(0, 0));
@@ -64,13 +66,18 @@ public:
 };
 
 class Menu :public MyApp::Scene {
+private:
 	Font menuFont = Font(20, Typeface::Medium);
 	Font glyphFont;
 	const Array<GlowText> texts = {
-	GlowText(menuFont,U"ARTISTS",10);
-	GlowText(menuFont,U"RAMDOM",10);
-	GlowText(menuFont,U"SETTING",10);
-	GlowText(menuFont,U"CREDIT",10);
-	GlowText(menuFont,U"QUIT",10);
-	}
-}
+	GlowText(menuFont,U"ARTISTS",10),
+	GlowText(menuFont,U"RANDOM",10),
+	GlowText(menuFont,U"SETTING",10),
+	GlowText(menuFont,U"CREDIT",10),
+	GlowText(menuFont,U"QUIT",10),
+	};
+
+public:
+	void update() override;
+	void draw() const override;
+};

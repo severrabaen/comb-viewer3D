@@ -1,23 +1,25 @@
+#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
+#include "Menu.h"
 #include "Setting.h"
 
 Setting::Setting(const InitData& init) : IScene(init) {
 	settingFont = Font(10);
 	GUI gui(GUIStyle::Default);
 	gui.setTitle(U"Setting");
-	//ãƒ†ãƒ¼ãƒè‰²(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ãƒ€ãƒ¼ã‚¯ãƒ†ãƒ¼ãƒ)
+	//ƒe[ƒ}F(ƒfƒtƒHƒ‹ƒg‚Íƒ_[ƒNƒe[ƒ})
 	gui.add(U"Theme", GUIToggleSwitch::Create(U"DARK", U"LIGHT", false));
 }
 
 void Setting::update() {
-	//ãƒ€ãƒ¼ã‚¯ãƒ†ãƒ¼ãƒ
+	//ƒ_[ƒNƒe[ƒ}
 	if (gui.toggleSwitch(U"Theme").isLeft()) { Graphics::SetBackground(HSV(0, 0, 100)); }
-	//ãƒ©ã‚¤ãƒˆãƒ†ãƒ¼ãƒ
+	//ƒ‰ƒCƒgƒe[ƒ}
 	else { Graphics::SetBackground(HSV(165, 55, 26)); }
 }
 
-void Setting::draw() {
+void Setting::draw() const {
 
 }

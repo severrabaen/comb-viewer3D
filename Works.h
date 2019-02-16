@@ -1,6 +1,8 @@
-#pragma once
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
+
+//(๑•ૅㅁ•๑)o00(Works.hを作っている)
 
 //Time which decide when no one controls Comb-Viewer3D for a while.
 const int disappMAndRecMillisec = 10000;
@@ -9,7 +11,7 @@ struct works {
 	//Viewed model and its data.
 	Model workModel;
 	String titleName, authorName;
-}
+};
 
 //↓LeadLine
 enum class LeadLineTextHA {
@@ -23,9 +25,9 @@ enum class LeadLineTextVA {
 	Bottom,
 };
 
-void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, const String text, const LeadLineTextHA ha, const LeadLineVA va, const Font& WorksFont) {
+void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, const String text, const LeadLineTextHA ha, const LeadLineTextVA va, const Font& WorksFont) {
 	const Vec2 p1 = from;
-	const Vec2 p2 = p + lead1;
+	const Vec2 p2 = p1 + lead1;
 	const Vec2 p3 = p2 + Circular(lead2, ha == LeadLineTextHA::Left ? 270_deg : 90_deg);
 	const Rect region = WorksFont(text).region();
 
@@ -50,11 +52,16 @@ private:
 	Rect TwitterRect;
 	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
+	String title, creatorName;
 	//To change the model(2 things).
 	Triangle goToLeft, goToRight;
 	int nowdis, nextdis, prevdis;
 	//To disappMAndRec(2 things)
 	Stopwatch stopwatch;
 	bool disappFlag = false;
+	Font WorksFont;
+
 public:
-}
+	void update() override;
+	void draw() const override;
+};

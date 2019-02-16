@@ -1,3 +1,4 @@
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
@@ -7,25 +8,26 @@
 
 Works::Works(const InitData& init) :IScene(init) {
 	TextReader reader(U"works//Workslist.txt");
-	String line;
+	String line, creatorName, title;
+	BinaryReader ini;
 	while (reader.readLine(line)) {
 		works working;
 		working.workModel = Model(U"works//" + line + U".obj");
-		INIReader ini(U"works//" + line + U"exp.ini");
+		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
 			return;
 		}
-		creatorName = ini.get<String>(U"what.creator");
-		title = ini.get<String>(U"what.title");
+		creatorName = ini.read<String>(U"what.creator");
+		title = ini.read<String>(U"what.title");
 	}
 	WorksFont = Font();//決める
 	howToTexture = Texture(U"howToImg");
 	TwitterImg = Texture(U"Twitter.png");
-	TwitterRect = drawshape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
+	TwitterRect = drawShape<Rect>(TwitterImg.width, TwitterImg.height);//座標決め
 }
 
 void Works::update() {
-	//初回説明画像(いらないかな？)
+	//初回説明用画像(いらないかな？)
 	while (getData().firstOpenFlag) {
 		howToTexture.draw();
 		if (KeyEnter.pressed()) {
@@ -38,13 +40,13 @@ void Works::update() {
 		if ((KeyRight.pressed() || goToRight.LeftClicked()) || (getData().slideFlag&&)) {
 			nextWorkNum = nowWorkNum;
 			++nextWorkNum;
-			nextWorkNum %= works.size();
+			nextWorkNum %= (int)works.size();
 		}
 
 		if ((KeyLeft.pressed() || goToLeft.LeftClicked()) || (getData().slideFlag&&)) {
 			prevWorkNum = nowWorkNum;
 			++prevWorkNum;
-			prevWorkNum %= works.size();
+			prevWorkNum %= (int)works.size();
 		}
 
 		if (TwitterRect.mouseOver()) {
@@ -54,6 +56,7 @@ void Works::update() {
 		if (TwitterRect.leftClicked()) {
 			Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + creatorName + "の作品の" + titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D\n@severrabaen");
 		}
+
 		//マウスオーバー時にカーソルを手の形にする
 		const bool handCursorRight = goToRight.mouseOver();
 		const bool handCursorLeft = goToLeft.mouseOver();
@@ -65,7 +68,7 @@ void Works::update() {
 }
 
 //描画
-void Works::draw() {
+void Works::draw() const {
 	if (!disappFlag) {
 		TwitterImg.draw();
 	}

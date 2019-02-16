@@ -3,12 +3,12 @@
 #include <HamFramework.hpp>
 #include "Main.h"
 
-//ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã«ä½¿ã†æ–‡å­—
+//ƒL[ƒ{[ƒh‚Ég‚¤•¶š
 const String buttonChars = U"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?-_";
-//æŠ•ç¨¿è€…:æœ¬æ–‡
+//“ŠeÒ:–{•¶
 using posting = std::pair<String, String>;
 
-class CharButton{
+class CharButton {
 private:
 	String m_text;
 	Rect m_rect;
@@ -18,24 +18,28 @@ public:
 	CharButton(const String& text, const Rect& rect)
 		: m_text(text)
 		, m_rect(rect) {}
-	bool update(){
-		if (m_rect.leftClicked()){
+	bool update() {
+		if (m_rect.leftClicked()) {
 			m_pressed = true;
 		}
-		else if (m_pressed() && !m_rect.mouseOver()){
+		else if (m_pressed && !m_rect.mouseOver()) {
 			m_pressed = false;
 		}
-		else if (m_pressed && m_rect.leftReleased){
+		else if (m_pressed && m_rect.leftReleased) {
 			m_pressed = false;
 			return true;
 		}
 		return false;
 	}
-}
+};
 
 
-class Post :public MyApp::Scene{
+class Post :public MyApp::Scene {
 private:
-	
+	Font postFont;
+	Rect inpRect;
+
 public:
-}
+	void update() override;
+	void draw() const override;
+};

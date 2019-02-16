@@ -1,12 +1,16 @@
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 
-using MyApp = SceneManager<String>;
+//(๑•ૅㅁ•๑)o00(全部の基礎)
 
 struct ViewerData {
-	bool firstOpenFlag = true, glyphFlag = true, slideFlag=true;
-	int menuNum,worksNum,themeNum=0;//themeNum=0:Black 1:Light
+	bool firstOpenFlag = true, glyphFlag = true, slideFlag = true;
+	int menuNum, worksNum;
+	String verstr = { "0.0.1" };
 };
+
+using MyApp = SceneManager<String, ViewerData>;
 
 //MessageBox(escape or not)
 class Main :public MyApp::Scene {
@@ -14,10 +18,9 @@ private:
 	Font mFont = Font(18);
 	Point center = Window::Center();
 	Rect messageBox = Rect(300, 150).setCenter(center);
-	Rect yesButton = Rect(120, 40).setcenter(center.movedBy(-70, 30));
-	Rect noButton = Rect(120, 40).setcenter(center.movedBy(70, 30));
-	EasingController<double> easing(0.0, 1.0, Easing::Quart, 500.0);
-	EscapeRect = drawshape<Rect>(;
+	Rect yesButton = Rect(120, 40).setCenter(center.movedBy(-70, 30));
+	Rect noButton = Rect(120, 40).setCenter(center.movedBy(70, 30));
+	EasingController<double> easing((double)0.0, (double)1.0, Easing::Quart, (double)500.0);
 	void update() {
 		Graphics2D::SetTransform(Mat3x2::Identity());
 		const double e = easing.easeout();
@@ -25,11 +28,11 @@ private:
 			Graphics2D::SetTransform(Mat3x2::Translate(-center).scale(e).translate(center));
 			const ColorF uiColor = AlphaF(e);
 			RoundRect(messageBox, 20).draw(ColorF(0.2, 0.6, 0.4, e));
-			mFont(U"終了してよろしいですか？").drawCenter(center.movedBy(0, -30), uiColor);
+			mFont(U"終了してもよろしいですか？").drawAt(center.movedBy(0, -30), uiColor);
 			yesButton.drawFrame(2, 0, uiColor);
-			mFont(U"はい").drawCenter(yesButton.center, uiColor);
+			mFont(U"はい").drawAt(yesButton.center, uiColor);
 			noButton.drawFrame(2, 0, uiColor);
-			mFont(U"いいえ").drawCenter(noButton.center, uiColor);
+			mFont(U"いいえ").drawAt(noButton.center, uiColor);
 		}
 	}
 	if (!easing.isActive()) {
@@ -70,19 +73,16 @@ public:
 	explicit drawShape(Args&&... args)
 		: ShapeType(std::forward<Args>(args)...) {}
 
-	void update()
-	{
+	void update() {
 		m_transition.update(ShapeType::mouseOver());
 	}
 
-	void drawShape(Color color = Color(255, 255, 255)) const
-	{
+	void drawShape(Color color = Color(255, 255, 255)) const {
 		ShapeType::drawFrame(0, 2, color);
 		ShapeType::draw(Color(color, (uint32)(m_transition.value() * 64)));
 	}
 
-	const Transition& getTransition() const
-	{
+	const Transition& getTransition() const {
 		return m_transition;
 	}
 };

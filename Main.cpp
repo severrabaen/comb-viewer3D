@@ -1,9 +1,13 @@
-#pragma once
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
 #include "Menu.h"
 #include "Works.h"
+#include "Post.h"
+#include "Setting.h"
+
+//(๑•ૅㅁ•๑)o00(全部の基礎)
 
 //フルスクリーン化
 namespace fullscreen {
@@ -17,25 +21,18 @@ namespace fullscreen {
 }
 
 void Main() {
-	App::setupfullsc();
-	if(themeNum==0){
-	  Graphics::SetBackGround(Palette::HSV(0,0,14));
-	}
-	else{
-	  Graphics::SetBackGround(Palette::HSV(0,0,100));
-	}
-	Window::Resize({ windowWidth, windowHeight }, true);
-	Window::SetTitle(U"Comb Viewer 3D", verstr);
-
+	fullscreen::setupfullsc;
+	Window::Resize({ Window::Width, Window::Height }, true);
+	Window::SetTitle(U"Comb Viewer 3D", getData().verstr);
 	MyApp SceneMgr;
 	//メニュー
 	SceneMgr.add<Menu>(U"Menu");
 	//本編
-	SceneMgr.add<U"Works">;
-	//settings
-	SceneMgr.add<U"Setting">;
+	SceneMgr.add<Menu>(U"Works");
+	//設定
+	SceneMgr.add<Menu>(U"Setting");
 	//post(文化祭版限定機能)
-	SceneMgr.add<U"Post">;
+	SceneMgr.add<Menu>(U"Post");
 
 	while (System::Update()) {
 		SceneMgr.updateScene();
