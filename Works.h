@@ -1,19 +1,21 @@
 ﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
+#include "Main.h"
 
 //(๑•ૅㅁ•๑)o00(Works.hを作っている)
 
-//Time which decide when no one controls Comb-Viewer3D for a while.
+//フェード切り替えの時間(10sec.)
 const int disappMAndRecMillisec = 10000;
 
 struct works {
 	//Viewed model and its data.
 	Model workModel;
-	String titleName, authorName;
+	String titleName, creatorName;
+	int32 x, y;
 };
 
-//↓LeadLine
+/*↓LeadLine
 enum class LeadLineTextHA {
 	Left,
 	Right,
@@ -44,24 +46,26 @@ void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, c
 	Line(p2, p3).draw(Palette::White);
 	WorksFont(text).draw(pText, Palette::White);
 }
-//↑LeadLine
+↑LeadLine*/
 
 class Works :public MyApp::Scene {
 private:
-	Texture howToTexture, TwitterImg;
+	Texture TwitterImg;
 	Rect TwitterRect;
 	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
+	bool handCursorRight, handCursorLeft, handCursorTwitter;
 	String title, creatorName;
-	//To change the model(2 things).
+	//表示しているモデルの切り替え用
 	Triangle goToLeft, goToRight;
 	int nowdis, nextdis, prevdis;
-	//To disappMAndRec(2 things)
+	//自動フェード機能用
 	Stopwatch stopwatch;
 	bool disappFlag = false;
 	Font WorksFont;
 
 public:
+	Works(const InitData& init);
 	void update() override;
 	void draw() const override;
 };

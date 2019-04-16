@@ -1,17 +1,17 @@
-#pragma once
+﻿#pragma once
 #include <Siv3D.hpp>
-#include <HamFramework.hpp>
+#include <HamFrameWork.hpp>
 #include "Main.h"
+//(๑•ૅㅁ•๑)o00(Credit.hを作っている)
 
 class Credit :public MyApp::Scene {
 private:
-	Rect BackToMenuRect,creditRect;
-	Texture BackToMenuThumb;
-	Font BTMFont,CreditFont, chimpanzeeFont;
-	Audio chinpan,selectedSound;
+	Font creditFont;
+	String sentence = { U"Program: severrabaen\nArtists: RianDigital" };
+	Texture creditImg;
 
 public:
 	Credit(const InitData& init);
-	void update() override;
+	void update();
 	void draw() const override;
 };

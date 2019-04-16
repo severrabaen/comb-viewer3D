@@ -7,10 +7,9 @@
 
 Setting::Setting(const InitData& init) : IScene(init) {
 	settingFont = Font(10);
-	GUI gui(GUIStyle::Default);
-	gui.setTitle(U"Setting");
+	//gui.setTitle(U"Setting");
 	//テーマ色(デフォルトはダークテーマ)
-	gui.add(U"Theme", GUIToggleSwitch::Create(U"DARK", U"LIGHT", false));
+	SimpleGUI::RadioButtons(U"DARK", U"LIGHT");
 }
 
 void Setting::update() {

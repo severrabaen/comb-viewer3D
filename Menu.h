@@ -21,7 +21,7 @@ public:
 
 		Image image(region, Color(0, 0));
 
-		font(text).write(image, m_offset, Palette::White);
+		font(text).overwrite(image, m_offset, Palette::White);
 
 		image.gaussianBlur(blur, blur).gammaCorrect(gamma);
 
@@ -60,7 +60,7 @@ public:
 		return regionCenter(Vec2(Window::Width() / 2, y));
 	}
 
-	RectF regionCenter(const Vec2& pos) const {
+	RectF regionCenter(const Vec2 & pos) const {
 		return region(pos - m_texture.size / 2);
 	}
 };
@@ -68,7 +68,7 @@ public:
 class Menu :public MyApp::Scene {
 private:
 	Font menuFont = Font(20, Typeface::Medium);
-	Font glyphFont;
+
 	const Array<GlowText> texts = {
 	GlowText(menuFont,U"ARTISTS",10),
 	GlowText(menuFont,U"RANDOM",10),
@@ -78,6 +78,7 @@ private:
 	};
 
 public:
-	void update() override;
+	Menu(const InitData& init);
+	void update();
 	void draw() const override;
 };

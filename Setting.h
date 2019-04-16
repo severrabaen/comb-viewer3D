@@ -7,6 +7,7 @@ class Setting :public MyApp::Scene {
 private:
 	Font settingFont;
 public:
-	void update() const override;
+	Setting(const InitData& init);
+	void update();
 	void draw() const;
-}
+};

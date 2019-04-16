@@ -1,11 +1,13 @@
-#pragma once
+ï»¿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
 
-//ƒL[ƒ{[ƒh‚Ég‚¤•¶š
+//(à¹‘â€¢à«…ã…â€¢à¹‘)o00(Post.hã‚’ä½œã£ã¦ã„ã‚‹)
+
+//ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã«ä½¿ã†æ–‡å­—
 const String buttonChars = U"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?-_";
-//“ŠeÒ:–{•¶
+//æŠ•ç¨¿è€…:æœ¬æ–‡
 using posting = std::pair<String, String>;
 
 class CharButton {
@@ -37,9 +39,10 @@ public:
 class Post :public MyApp::Scene {
 private:
 	Font postFont;
-	Rect inpRect;
+	Rect inpRect, expRect;
 
 public:
+	Post(const InitData& init);
 	void update() override;
 	void draw() const override;
 };
