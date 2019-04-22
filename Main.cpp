@@ -3,7 +3,6 @@
 #include "Main.h"
 #include "Menu.h"
 #include "Works.h"
-#include "Post.h"
 #include "Setting.h"
 #include "Credit.h"
 
