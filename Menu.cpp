@@ -27,4 +27,9 @@ void Menu::draw() const {
 		text.drawCenter(260 + i * 50, AlphaF(mouseOver ? 1.0 : 0.0), AlphaF(mouseOver ? 1.0 : 0.9));
 		++i;
 	}
+
+	for (int i = 0; i < 5; ++i) {
+		drawshape<Rect>.draw();
+		texts[i].drawAt();
+	}
 }

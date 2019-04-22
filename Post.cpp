@@ -17,7 +17,7 @@ void Post::update() {
 }
 
 void Post::draw() const {
-	for (auto i : buttonChars) { i.draw(); }
+	for (auto i : step(buttonChars)) { i.draw(); }
 	inpRect.drawFrame();
 	expRect.drawFrame();
 }

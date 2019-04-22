@@ -31,6 +31,7 @@ Works::Works(const InitData& init) :IScene(init) {
 
 void Works::update() {
 	Graphics3D::FreeCamera();
+	
 	works work;
 	if (KeyRight.pressed() || goToRight.leftClicked()) {
 		nextWorkNum = nowWorkNum;
@@ -49,7 +50,7 @@ void Works::update() {
 	}
 
 	if (TwitterRect.leftClicked()) {
-		Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + work.creatorName + "の作品の" + work.titleName + "を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
+		Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + work.creatorName + U"の作品の" + work.titleName + U"を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
 	}
 
 	//スライドショー
