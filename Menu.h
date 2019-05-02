@@ -68,10 +68,9 @@ public:
 class Menu :public MyApp::Scene {
 private:
 	Font menuFont = Font(20, Typeface::Medium);
-	Rect fiRect, seRect, thirdRect;
+	Rect exitRect,randomRect,creditRect,settingRect;
 
 	const Array<GlowText> texts = {
-	GlowText(menuFont,U"ARTISTS",10),
 	GlowText(menuFont,U"RANDOM",10),
 	GlowText(menuFont,U"SETTING",10),
 	GlowText(menuFont,U"CREDIT",10),

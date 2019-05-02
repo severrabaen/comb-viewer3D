@@ -13,8 +13,12 @@ Works::Works(const InitData& init) :IScene(init) {
 		works working;
 		working.workModel = Model(U"works//" + line + U".obj");
 		ini.open(U"works//" + line + U"exp.ini");
-		if (!ini) { return; }
-		creatorName = ini.read<String>(U"what.creator");
+		if (!ini) {
+			Console << "The ini doesn't exist!";
+			return;
+		}
+		//creatorName = ini.get<String>(U"what.creator");
+		String creatorName = ini.read<String>(U"what.creator");
 		title = ini.read<String>(U"what.title");
 	}
 	WorksFont = Font();//決める
@@ -31,7 +35,7 @@ Works::Works(const InitData& init) :IScene(init) {
 
 void Works::update() {
 	Graphics3D::FreeCamera();
-	
+
 	works work;
 	if (KeyRight.pressed() || goToRight.leftClicked()) {
 		nextWorkNum = nowWorkNum;
@@ -50,7 +54,7 @@ void Works::update() {
 	}
 
 	if (TwitterRect.leftClicked()) {
-		Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + work.creatorName + U"の作品の" + work.titleName + U"を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
+		Twitter::OpenTweetWindow(U"今、#Comb-Viewer3Dで、" + work.creatorName + U"の3DCG作品の" + work.titleName + U"を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
 	}
 
 	//スライドショー

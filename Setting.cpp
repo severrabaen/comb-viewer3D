@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
@@ -8,7 +8,7 @@
 Setting::Setting(const InitData& init) : IScene(init) {
 	settingFont = Font(10);
 	gui.setTitle(U"Setting");
-	//ƒe[ƒ}F(ƒfƒtƒHƒ‹ƒg‚Íƒ_[ƒNƒe[ƒ})
+	//ï¿½eï¿½[ï¿½}ï¿½F(ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Íƒ_ï¿½[ï¿½Nï¿½eï¿½[ï¿½})
 	SimpleGUI::RadioButtons(U"DARK", U"LIGHT");
 }
 
