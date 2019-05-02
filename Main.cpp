@@ -27,13 +27,11 @@ void Main() {
 	//メニュー
 	SceneMgr.add<Menu>(U"Menu");
 	//本編
-	SceneMgr.add<Menu>(U"Works");
+	SceneMgr.add<Works>(U"Works");
 	//設定画面
-	SceneMgr.add<Menu>(U"Setting");
-	//post(文化祭版限定機能)
-	SceneMgr.add<Menu>(U"Post");
+	SceneMgr.add<Setting>(U"Setting");
 	//クレジット
-	SceneMgr.add<Menu>(U"Credit");
+	SceneMgr.add<Credit>(U"Credit");
 
 	while (System::Update()) {
 		SceneMgr.updateScene();

@@ -6,11 +6,11 @@
 //(๑•ૅㅁ•๑)o00(Works.hを作っている)
 
 //フェード切り替えの時間(10sec.)
-const int disappMAndRecMillisec = 10000;
+const int disappMillisec = 10000;
 
 struct works {
 	//Viewed model and its data.
-	Model workModel;
+	//Model workModel;
 	String titleName, creatorName;
 	int32 x, y;
 };
@@ -55,13 +55,13 @@ private:
 	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
 	bool handCursorRight, handCursorLeft, handCursorTwitter;
-	String title, creatorName;
-	//表示しているモデルの切り替え用
+	String title, authorName;
+	//表示しているモデルの切り替え用の矢印
 	Triangle goToLeft, goToRight;
 	int nowdis, nextdis, prevdis;
 	//自動フェード機能用
 	Stopwatch stopwatch;
-	bool disappFlag = false;
+	bool disappFlag = false, cursorhand;
 	Font WorksFont;
 
 public:

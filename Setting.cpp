@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
@@ -7,15 +7,13 @@
 
 Setting::Setting(const InitData& init) : IScene(init) {
 	settingFont = Font(10);
-	gui.setTitle(U"Setting");
-	//ï¿½eï¿½[ï¿½}ï¿½F(ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Íƒ_ï¿½[ï¿½Nï¿½eï¿½[ï¿½})
-	SimpleGUI::RadioButtons(U"DARK", U"LIGHT");
 }
 
 void Setting::update() {
-	//dark
-	if (gui.toggleSwitch(U"Theme").isLeft()) { Graphics::SetBackground(HSV(0, 0, 100)); }
-	//light
+	//”wŒi•ÏX
+	//ƒ_[ƒNƒe[ƒ}
+	if (SimpleGUI::Button(U"Background", Vec2(100, 100), 200, true)) { Graphics::SetBackground(HSV(0, 0, 100)); }
+	//ƒ‰ƒCƒgƒe[ƒ}
 	else { Graphics::SetBackground(HSV(165, 55, 26)); }
 }
 

@@ -18,7 +18,7 @@ Menu::Menu(const InitData& init) :IScene(init) {
 void Menu::update() {
 	if (exitRect.leftClicked()) { System::Exit(); }
 	if (randomRect.leftClicked()) {
-		getData().startNum = Random() % works.size() + 1;
+		getData().startNum = Random<int>(1,sizeof(works)) % sizeof(works) + 1;
 		getData().slideFlag = true;
 		changeScene(U"Works");
 	}
@@ -29,13 +29,14 @@ void Menu::update() {
 void Menu::draw() const {
 	int32 i = 0;
 	for (const auto& text : texts) {
-		const bool mouseOver = text.regionCenter(260 + i * 50).mouseOver;
+		const bool mouseOver = text.regionCenter(260 + i * 50).mouseOver();
 		text.drawCenter(260 + i * 50, AlphaF(mouseOver ? 1.0 : 0.0), AlphaF(mouseOver ? 1.0 : 0.9));
 		++i;
 	}
+	randomRect.drawFrame();
+	creditRect.drawFrame();
+	settingRect.drawFrame();
+	exitRect.drawFrame();
 
-	for (int i = 0; i < 5; ++i) {
-		drawshape<Rect>.draw();
-		texts[i].drawAt();
-	}
+	
 }

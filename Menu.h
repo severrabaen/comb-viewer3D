@@ -40,7 +40,6 @@ public:
 
 	RectF draw(const Vec2& pos, const Color& glow = Palette::White, const Color& text = Palette::White) const {
 		m_texture.draw(pos, glow);
-
 		return m_font(m_text).draw(pos + m_offset, text);
 	}
 
@@ -49,11 +48,11 @@ public:
 	}
 
 	RectF drawCenter(const Vec2& pos, const Color& glow = Palette::White, const Color& text = Palette::White) const {
-		return draw(pos - m_texture.size / 2, glow, text);
+		return draw(pos - m_texture.size() / 2, glow, text);
 	}
 
 	RectF region(const Vec2& pos = Vec2(0, 0)) const {
-		return RectF(pos, m_texture.size).stretched(-m_offset);
+		return RectF(pos, m_texture.size()).stretched(-m_offset);
 	}
 
 	RectF regionCenter(double y) const {
@@ -61,15 +60,14 @@ public:
 	}
 
 	RectF regionCenter(const Vec2 & pos) const {
-		return region(pos - m_texture.size / 2);
+		return region(pos - m_texture.size() / 2);
 	}
 };
 
 class Menu :public MyApp::Scene {
 private:
 	Font menuFont = Font(20, Typeface::Medium);
-	Rect exitRect,randomRect,creditRect,settingRect;
-
+	Rect exitRect, randomRect, creditRect, settingRect;
 	const Array<GlowText> texts = {
 	GlowText(menuFont,U"RANDOM",10),
 	GlowText(menuFont,U"SETTING",10),
@@ -79,6 +77,6 @@ private:
 
 public:
 	Menu(const InitData& init);
-	void update();
+	void update()override;
 	void draw() const override;
 };
