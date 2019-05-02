@@ -55,7 +55,6 @@ private:
 	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
 	bool handCursorRight, handCursorLeft, handCursorTwitter;
-	String title, authorName;
 	//表示しているモデルの切り替え用の矢印
 	Triangle goToLeft, goToRight;
 	int nowdis, nextdis, prevdis;

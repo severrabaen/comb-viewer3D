@@ -1,4 +1,4 @@
-#include <Siv3D.hpp>
+﻿#include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
 #include "Works.h"
@@ -19,7 +19,7 @@ Works::Works(const InitData& init) :IScene(init) {
 			Console << U"The ini file doesn't exist!";
 			return;
 		}
-		authorName = ini.readAll(U"what.name");
+		authorName = ini.read(U"what.name");
 	}
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
@@ -55,7 +55,7 @@ void Works::update() {
 	}
 
 	if (TwitterRect.leftClicked()) {
-		Twitter::OpenTweetWindow(U"#Combu-Viewer3Dで、" + work.creatorName + U"の3DCG作品の" + work.titleName + U"を見ています!\nCombu Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Combu-Viewer3D via @severrabaen");
+		Twitter::OpenTweetWindow(U"#Comb-Viewer3Dで、" + work.creatorName + U"の3DCG作品の" + work.titleName + U"を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
 	}
 
 	//スライドショー
@@ -87,5 +87,5 @@ void Works::draw() const {
 		goToRight.drawFrame();
 		goToLeft.drawFrame();
 	}
-	work.workModel.draw();
+	//work.workModel.draw();
 }
