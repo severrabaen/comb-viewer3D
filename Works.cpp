@@ -1,4 +1,4 @@
-﻿#include <Siv3D.hpp>
+#include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
 #include "Works.h"
@@ -23,7 +23,7 @@ Works::Works(const InitData& init) :IScene(init) {
 	}
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
-	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(絶対変える)
+	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(後で絶対変える)
 	goToRight = Triangle(Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 + 25), Vec2(50, Window::Height() / 2 - 25));
 	goToLeft = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width(), Window::Height() / 2 + 25));
 
@@ -76,6 +76,8 @@ void Works::update() {
 
 //描画
 void Works::draw() const {
+	works work;
+
 	if (!disappFlag) {
 		TwitterImg.draw();
 	}
@@ -85,5 +87,5 @@ void Works::draw() const {
 		goToRight.drawFrame();
 		goToLeft.drawFrame();
 	}
-	works.workModel.draw();
+	work.workModel.draw();
 }
