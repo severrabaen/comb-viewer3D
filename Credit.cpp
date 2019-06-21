@@ -12,6 +12,7 @@ Credit::Credit(const InitData& init) :IScene(init) {
 void Credit::update() {
 
 }
+
 void Credit::draw() const {
-	creditFont.draw(sentence);
+	//creditFont.draw(sentence);
 }

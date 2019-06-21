@@ -16,10 +16,10 @@ Works::Works(const InitData& init) :IScene(init) {
 		//working.workModel = Model(U"works//" + line + U".obj");
 		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
-			Console << U"The ini file doesn't exist!";
+			Console << U"The ini file doesn't exist!\n";
 			return;
 		}
-		authorName = ini.read(U"what.name");
+		//authorName = ini.read(U"what.name");
 	}
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
@@ -65,13 +65,26 @@ void Works::update() {
 		nextWorkNum %= sizeof(work);
 	}
 
-	if (handCursorRight) { cursorhand = true; }
-	if (handCursorLeft) { cursorhand = true; }
-	if (handCursorTwitter) { cursorhand = true; }
+	if (handCursorRight) {
+		cursorhand = true;
+	}
+
+	if (handCursorLeft) {
+		cursorhand = true;
+	}
+
+	if (handCursorTwitter) {
+		cursorhand = true;
+	}
 
 
-	if (!cursorhand) { CursorStyle::Default; }
-	else { CursorStyle::Hand; }
+	if (!cursorhand) {
+		CursorStyle::Default;
+	}
+
+	else {
+		CursorStyle::Hand;
+	}
 }
 
 //描画
@@ -82,7 +95,7 @@ void Works::draw() const {
 		TwitterImg.draw();
 	}
 
-	//x座標のいい感じのところにカーソルが来たら矢印を表示
+	//マウスのx座標がいい感じのところに来たら移動用の矢印を表示
 	if ((double)Cursor::Pos().x <= (double)Window::Width() / 5 || (double)Cursor::Pos().x >= (double)(Window::Width() / 5) * 4) {
 		goToRight.drawFrame();
 		goToLeft.drawFrame();
