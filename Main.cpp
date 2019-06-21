@@ -15,12 +15,14 @@ namespace fullscreen {
 		Window::SetBaseSize(BaseSize);
 		const auto [displayIndex, displayMode] = OptimalScreen::Get(OptimalScreen::Preference::AspectMin, BaseSize);
 		Graphics::SetFullScreen(true, displayMode.size, displayIndex, displayMode.refreshRateHz);
-		Console << U"Display {} | size {} @ {} Hz"_fmt(displayIndex, displayMode.size, displayMode.refreshRateHz);
+		Print << U"Display {} | size {} @ {} Hz"_fmt(displayIndex, displayMode.size, displayMode.refreshRateHz);
 	}
 }
 
+using namespace fullscreen;
+
 void Main() {
-	fullscreen::setupfullsc;
+	setupfullsc();
 	Window::Resize((int32)Window::Width, (int32)Window::Height, true);
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
