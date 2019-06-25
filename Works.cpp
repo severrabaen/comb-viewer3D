@@ -7,6 +7,9 @@
 
 Works::Works(const InitData& init) :IScene(init) {
 	TextReader reader(U"works//Workslist.txt");
+	
+	//エラーが生じた際にログをtxtファイルにも残す
+	TextWriter writer(U"logger.txt");
 	String line, authorName, title;
 	BinaryReader ini;
 
@@ -16,7 +19,8 @@ Works::Works(const InitData& init) :IScene(init) {
 		//working.workModel = Model(U"works//" + line + U".obj");
 		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
-			Print << U"Error has occured!:The ini file doesn't exist!\n";
+			Print << U"Error has occured! : The named file doesn't exist!\n";
+			writer << U"Error!(lol)  When:" << DateTime::Now();
 			return;
 		}
 		//authorName = ini.read(U"what.name");
@@ -35,6 +39,7 @@ Works::Works(const InitData& init) :IScene(init) {
 }
 
 void Works::update() {
+	
 	//実装されたら
 	//Graphics3D::FreeCamera();
 
@@ -86,6 +91,7 @@ void Works::update() {
 	else {
 		CursorStyle::Hand;
 	}
+	
 }
 
 //描画
