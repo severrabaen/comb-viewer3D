@@ -23,9 +23,10 @@ using namespace fullscreen;
 
 void Main() {
 	setupfullsc();
-	Window::Resize((int32)Window::Width, (int32)Window::Height, true);
+	//Window::Resize((int32)Window::Width, (int32)Window::Height, true);
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
+
 	//メニュー
 	SceneMgr.add<Menu>(U"Menu");
 	//本編

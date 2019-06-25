@@ -16,16 +16,17 @@ Works::Works(const InitData& init) :IScene(init) {
 		//working.workModel = Model(U"works//" + line + U".obj");
 		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
-			Console << U"The ini file doesn't exist!\n";
+			Print << U"Error has occured!:The ini file doesn't exist!\n";
 			return;
 		}
 		//authorName = ini.read(U"what.name");
 	}
+
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(後で絶対変える)
-	goToRight = Triangle(Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 + 25), Vec2(50, Window::Height() / 2 - 25));
-	goToLeft = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width(), Window::Height() / 2 + 25));
+	goToRight = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
+	goToLeft = Triangle(Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width(), Window::Height() / 2 + 25), Vec2(Window::Width() - 25, Window::Height() / 2));
 
 	//マウスオーバー時にカーソルを手の形にする
 	handCursorRight = goToRight.mouseOver();
