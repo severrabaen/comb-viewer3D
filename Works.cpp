@@ -7,7 +7,7 @@
 
 Works::Works(const InitData& init) :IScene(init) {
 	TextReader reader(U"works//Workslist.txt");
-	
+
 	//エラーが生じた際にログをtxtファイルにも残す
 	TextWriter writer(U"logger.txt");
 	String line, authorName, title;
@@ -20,7 +20,7 @@ Works::Works(const InitData& init) :IScene(init) {
 		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
 			Print << U"Error has occured! : The named file doesn't exist!\n";
-			writer << U"Error!(lol)  When:" << DateTime::Now();
+			writer << U"Error!(lol)  When:" << DateTime::Now() << U"Cause: ini file doesn't exist.";
 			return;
 		}
 		//authorName = ini.read(U"what.name");
@@ -29,17 +29,13 @@ Works::Works(const InitData& init) :IScene(init) {
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(後で絶対変える)
-	goToRight = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
-	goToLeft = Triangle(Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width(), Window::Height() / 2 + 25), Vec2(Window::Width() - 25, Window::Height() / 2));
 
-	//マウスオーバー時にカーソルを手の形にする
-	handCursorRight = goToRight.mouseOver();
-	handCursorLeft = goToLeft.mouseOver();
-	handCursorTwitter = TwitterRect.mouseOver();
+	goToRight = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
+	goToLeft = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width() - 50, Window::Height() / 2 - 25));
 }
 
 void Works::update() {
-	
+
 	//実装されたら
 	//Graphics3D::FreeCamera();
 
@@ -71,15 +67,15 @@ void Works::update() {
 		nextWorkNum %= sizeof(work);
 	}
 
-	if (handCursorRight) {
+	if (goToRight.mouseOver()) {
 		cursorhand = true;
 	}
 
-	if (handCursorLeft) {
+	if (goToLeft.mouseOver()) {
 		cursorhand = true;
 	}
 
-	if (handCursorTwitter) {
+	if (TwitterRect.mouseOver()) {
 		cursorhand = true;
 	}
 
@@ -91,7 +87,7 @@ void Works::update() {
 	else {
 		CursorStyle::Hand;
 	}
-	
+
 }
 
 //描画
@@ -107,5 +103,6 @@ void Works::draw() const {
 		goToRight.drawFrame();
 		goToLeft.drawFrame();
 	}
+
 	//work.workModel.draw();
 }

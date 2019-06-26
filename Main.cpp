@@ -12,6 +12,7 @@
 namespace fullscreen {
 	constexpr Size BaseSize(720, 720);
 	void setupfullsc() {
+		
 		Window::SetBaseSize(BaseSize);
 		const auto [displayIndex, displayMode] = OptimalScreen::Get(OptimalScreen::Preference::AspectMin, BaseSize);
 		Graphics::SetFullScreen(true, displayMode.size, displayIndex, displayMode.refreshRateHz);
@@ -23,7 +24,7 @@ using namespace fullscreen;
 
 void Main() {
 	setupfullsc();
-	//Window::Resize((int32)Window::Width, (int32)Window::Height, true);
+	ClearPrint();
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
 
