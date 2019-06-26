@@ -30,8 +30,8 @@ Works::Works(const InitData& init) :IScene(init) {
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(後で絶対変える)
 
-	goToRight = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
-	goToLeft = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width() - 50, Window::Height() / 2 - 25));
+	goToLeft = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
+	goToRight = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width() - 50, Window::Height() / 2 - 25));
 }
 
 void Works::update() {
