@@ -3,10 +3,10 @@
 #include <HamFramework.hpp>
 #include "Main.h"
 
-//(๑•ૅㅁ•๑)o00(Works.hを作っている)
+//(๑•ૅㅁ•๑)o00(スライドショーをする上での必要なデータ集)
 
-//フェード切り替えの時間(10sec.)
-const int disappMillisec = 10000;
+//フェード切り替えの時間(5sec.)
+const int disappMillisec = 5000;
 
 struct works {
 	//Viewed model and its data.
@@ -51,7 +51,7 @@ void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, c
 class Works :public MyApp::Scene {
 private:
 	Texture TwitterImg;
-	Rect TwitterRect;
+	Rect TwitterRect, menuBack;
 	int nowWorkNum, nextWorkNum, prevWorkNum;
 	double zoom = 0;
 	bool handCursorRight, handCursorLeft, handCursorTwitter;

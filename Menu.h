@@ -3,7 +3,7 @@
 #include <hamFramework.hpp>
 #include "Main.h"
 
-//(๑•ૅㅁ•๑)o00(Menu.hを作っている)
+//(๑•ૅㅁ•๑)o00(メニューに必要なデータ。GlowTextを追加するかは検討中)
 
 class GlowText {
 private:

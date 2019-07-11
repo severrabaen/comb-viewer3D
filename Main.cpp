@@ -6,13 +6,12 @@
 #include "Setting.h"
 #include "Credit.h"
 
-//(๑•ૅㅁ•๑)o00(全部の基礎)
+//(๑•ૅㅁ•๑)o00(フルスクリーン、SceneMgr)
 
 //フルスクリーン化
 namespace fullscreen {
 	constexpr Size BaseSize(720, 720);
 	void setupfullsc() {
-		
 		Window::SetBaseSize(BaseSize);
 		const auto [displayIndex, displayMode] = OptimalScreen::Get(OptimalScreen::Preference::AspectMin, BaseSize);
 		Graphics::SetFullScreen(true, displayMode.size, displayIndex, displayMode.refreshRateHz);
@@ -24,7 +23,6 @@ using namespace fullscreen;
 
 void Main() {
 	setupfullsc();
-	ClearPrint();
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
 

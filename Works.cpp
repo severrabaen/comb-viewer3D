@@ -3,24 +3,25 @@
 #include "Main.h"
 #include "Works.h"
 
-//(๑•ૅㅁ•๑)o00(ここがスライドショーメインパート)
+//(๑•ૅㅁ•๑)o00(メインパート。未実装の機能はアップデートを待つ)
 
 Works::Works(const InitData& init) :IScene(init) {
 	TextReader reader(U"works//Workslist.txt");
 
 	//エラーが生じた際にログをtxtファイルにも残す
-	TextWriter writer(U"logger.txt");
+	TextWriter writer(U"works//logger.txt");
 	String line, authorName, title;
 	BinaryReader ini;
 
 	while (reader.readLine(line)) {
 		works working;
-		//実装されたら
+		//waiting for update...
+
 		//working.workModel = Model(U"works//" + line + U".obj");
 		ini.open(U"works//" + line + U"exp.ini");
 		if (!ini) {
 			Print << U"Error has occured! : The named file doesn't exist!\n";
-			writer << U"Error!(lol)  When:" << DateTime::Now() << U"Cause: ini file doesn't exist.";
+			writer << U"Error!(lol)  When:" << DateTime::Now() << U"Cause: ini file doesn't exist!";
 			return;
 		}
 		//authorName = ini.read(U"what.name");
@@ -29,14 +30,15 @@ Works::Works(const InitData& init) :IScene(init) {
 	WorksFont = Font(20, Typeface::Medium);//暫定
 	TwitterImg = Texture(U"Twitter.png");
 	TwitterRect = drawshape<Rect>(1, 2, 3, 4);//暫定(後で絶対変える)
-
+	menuBack = drawshape<Rect>(1, 2, 3, 4);//(暫定)
 	goToLeft = Triangle(Vec2(50, Window::Height() / 2 + 25), Vec2(25, Window::Height() / 2), Vec2(50, Window::Height() / 2 - 25));
 	goToRight = Triangle(Vec2(Window::Width() - 25, Window::Height() / 2), Vec2(Window::Width() - 50, Window::Height() / 2 + 25), Vec2(Window::Width() - 50, Window::Height() / 2 - 25));
+	stopwatch.start();
 }
 
 void Works::update() {
 
-	//実装されたら
+	//waiting for update...
 	//Graphics3D::FreeCamera();
 
 	works work;
@@ -60,11 +62,12 @@ void Works::update() {
 		Twitter::OpenTweetWindow(U"#Comb-Viewer3Dで、" + work.creatorName + U"の3DCG作品の" + work.titleName + U"を見ています!\nComb Viewer3Dのダウンロードはこちらから!\nhttps://github.com/severrabaen/Comb-Viewer3D via @severrabaen");
 	}
 
-	//スライドショー
-	if (getData().slideFlag || stopwatch.ms() == disappMillisec) {
+	//slideshow
+	if (getData().slideFlag && stopwatch.ms() == disappMillisec) {
 		nextWorkNum = nowWorkNum;
 		++nextWorkNum;
 		nextWorkNum %= sizeof(work);
+		stopwatch.restart();
 	}
 
 	if (goToRight.mouseOver()) {
@@ -102,6 +105,8 @@ void Works::draw() const {
 	if ((double)Cursor::Pos().x <= (double)Window::Width() / 5 || (double)Cursor::Pos().x >= (double)(Window::Width() / 5) * 4) {
 		goToRight.drawFrame();
 		goToLeft.drawFrame();
+		menuBack.drawFrame();
+		WorksFont(U"メニューに戻る", menuBack.center());
 	}
 
 	//work.workModel.draw();

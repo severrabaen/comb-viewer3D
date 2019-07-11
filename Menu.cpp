@@ -5,7 +5,7 @@
 #include "Menu.h"
 #include "Works.h"
 
-//(๑•ૅㅁ•๑)o00(メインメニューを作っている)
+//(๑•ૅㅁ•๑)o00(メインメニュー)
 
 const String text = U"Comb-Viewer3D";
 Menu::Menu(const InitData& init) :IScene(init) {

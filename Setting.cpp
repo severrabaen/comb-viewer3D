@@ -1,22 +1,34 @@
-#pragma once
+﻿#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
 #include "Menu.h"
 #include "Setting.h"
 
+//(๑•ૅㅁ•๑)o00(アプリの諸々の設定。現時点では背景とスライドショーの設定)
+
 Setting::Setting(const InitData& init) : IScene(init) {
 	settingFont = Font(10);
 }
 
 void Setting::update() {
-	//�w�i�ύX
-	//�_�[�N�e�[�}
-	if (SimpleGUI::Button(U"Background", Vec2(100, 100), 200, true)) { Graphics::SetBackground(HSV(0, 0, 100)); }
-	//���C�g�e�[�}
-	else { Graphics::SetBackground(HSV(165, 55, 26)); }
+	//change the background
+	SimpleGUI::CheckBoxAt(getData().darkTheme, U"Theme", Vec2(Window::Width() - 100, 320), 170);
+	//dark theme
+	if (getData().darkTheme) {
+		Graphics::SetBackground(HSV(0, 0, 100));
+	}
+	//light theme
+	else {
+		Graphics::SetBackground(HSV(165, 55, 26));
+	}
+
+	//if slideshow or not
+	SimpleGUI::CheckBoxAt(getData().slideFlag, U"slideshow", Vec2(Window::Width() - 100, 420), 170);
+
 }
 
 void Setting::draw() const {
-
+	menuBack.drawFrame();
+	settingFont(U"メニューに戻る", menuBack.center());
 }

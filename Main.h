@@ -2,12 +2,12 @@
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 
-//(๑•ૅㅁ•๑)o00(全部の基礎(すごそう))
+//(๑•ૅㅁ•๑)o00(ViewerDataはアプリ全体の共有データ)
 
 const String verstr = { U"v0.0.1" };
 
 struct ViewerData {
-	bool slideFlag = true;
+	bool slideFlag = true, darkTheme = true;
 	int menuNum, worksNum, startNum;
 };
 
