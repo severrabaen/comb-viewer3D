@@ -71,13 +71,10 @@ private:
 		if (e == 1.0) {
 			if (yesButton.mouseOver())
 				yesButton.draw(AlphaF(0.3));
-
 			if (noButton.mouseOver())
 				noButton.draw(AlphaF(0.3));
-
 			if (yesButton.leftClicked())
 				System::Exit();
-
 			if (noButton.leftClicked())
 				easing.start();
 		}
@@ -86,6 +83,5 @@ private:
 		}
 	}
 public:
-
 }
 */

@@ -44,7 +44,7 @@ public:
 	}
 
 	RectF drawCenter(double y, const Color& glow = Palette::White, const Color& text = Palette::White) const {
-		return drawCenter(Vec2(Window::Width() / 2, y), glow, text);
+		return drawCenter(Vec2(Scene::Width() / 2, y), glow, text);
 	}
 
 	RectF drawCenter(const Vec2& pos, const Color& glow = Palette::White, const Color& text = Palette::White) const {
@@ -56,10 +56,10 @@ public:
 	}
 
 	RectF regionCenter(double y) const {
-		return regionCenter(Vec2(Window::Width() / 2, y));
+		return regionCenter(Vec2(Scene::Width() / 2, y));
 	}
 
-	RectF regionCenter(const Vec2 & pos) const {
+	RectF regionCenter(const Vec2& pos) const {
 		return region(pos - m_texture.size() / 2);
 	}
 };

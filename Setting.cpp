@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿
+#pragma once
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "Main.h"
@@ -13,18 +14,18 @@ Setting::Setting(const InitData& init) : IScene(init) {
 
 void Setting::update() {
 	//change the background
-	SimpleGUI::CheckBoxAt(getData().darkTheme, U"Theme", Vec2(Window::Width() - 100, 320), 170);
+	SimpleGUI::CheckBoxAt(getData().darkTheme, U"Theme", Vec2(Scene::Width() - 100, 320), 170);
 	//dark theme
 	if (getData().darkTheme) {
-		Graphics::SetBackground(HSV(0, 0, 100));
+		Scene::SetBackground(HSV(0, 0, 100));
 	}
 	//light theme
 	else {
-		Graphics::SetBackground(HSV(165, 55, 26));
+		Scene::SetBackground(HSV(165, 55, 26));
 	}
 
 	//if slideshow or not
-	SimpleGUI::CheckBoxAt(getData().slideFlag, U"slideshow", Vec2(Window::Width() - 100, 420), 170);
+	SimpleGUI::CheckBoxAt(getData().slideFlag, U"slideshow", Vec2(Scene::Width() - 100, 420), 170);
 
 }
 

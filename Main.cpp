@@ -1,5 +1,6 @@
 ﻿#include <Siv3D.hpp>
 #include <HamFramework.hpp>
+#define SIV3D_WINDOWS_HIGH_DPI
 #include "Main.h"
 #include "Menu.h"
 #include "Works.h"
@@ -9,7 +10,7 @@
 //(๑•ૅㅁ•๑)o00(フルスクリーン、SceneMgr)
 
 //フルスクリーン化
-namespace fullscreen {
+/*namespace fullscreen {
 	constexpr Size BaseSize(720, 720);
 	void setupfullsc() {
 		Window::SetBaseSize(BaseSize);
@@ -17,12 +18,12 @@ namespace fullscreen {
 		Graphics::SetFullScreen(true, displayMode.size, displayIndex, displayMode.refreshRateHz);
 		Print << U"Display {} | size {} @ {} Hz"_fmt(displayIndex, displayMode.size, displayMode.refreshRateHz);
 	}
-}
+}*/
 
-using namespace fullscreen;
+//using namespace fullscreen;
 
 void Main() {
-	setupfullsc();
+	//setupfullsc();
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
 

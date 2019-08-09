@@ -20,28 +20,23 @@ enum class LeadLineTextHA {
 	Left,
 	Right,
 };
-
 enum class LeadLineTextVA {
 	Top,
 	Middle,
 	Bottom,
 };
-
 void drawLeadLine(const Vec2& from, const Circular& lead1, const double lead2, const String text, const LeadLineTextHA ha, const LeadLineTextVA va, const Font& WorksFont) {
 	const Vec2 p1 = from;
 	const Vec2 p2 = p1 + lead1;
 	const Vec2 p3 = p2 + Circular(lead2, ha == LeadLineTextHA::Left ? 270_deg : 90_deg);
 	const Rect region = WorksFont(text).region();
-
 	Vec2 pText;
 	pText.x = ha == LeadLineTextHA::Left ? p3.x : p3.x - region.w;
-
 	switch (valign) {
 	case LeadLineTextVA::Top: pText.y = p3.y - region.h; break;
 	case LeadLineTextVA::Middle: pText.y = p3.y - region.h / 2; break;
 	case LeadLineTextVA::Bottom: pText.y = p3.y; break;
 	}
-
 	Line(p1, p2).draw(Palette::White);
 	Line(p2, p3).draw(Palette::White);
 	WorksFont(text).draw(pText, Palette::White);
@@ -62,6 +57,13 @@ private:
 	Stopwatch stopwatch;
 	bool disappFlag = false, cursorhand;
 	Font WorksFont;
+
+	struct worksinfo {
+		String titleName, creatorName;
+		FilePath path;
+	};
+
+	Array<worksinfo>wo;
 
 public:
 	Works(const InitData& init);
