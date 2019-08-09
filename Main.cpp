@@ -26,6 +26,10 @@ void Main() {
 	//setupfullsc();
 	Window::SetTitle(U"Comb Viewer 3D" + verstr);
 	MyApp SceneMgr;
+	
+	const Array<Size> resolutions = Graphics::GetFullscreenResolutions();
+	size_t index = resolutions.size() - 1;
+	Window::SetFullscreen(true, resolutions[index]);
 
 	//メニュー
 	SceneMgr.add<Menu>(U"Menu");
